@@ -17,7 +17,7 @@ public class SimulationWebController {
 
         simulationData.addAttribute("simulationDataController",
                 simulationService.getAllSimulations());
-        simulationData.addAttribute("name", "Catherine");
+        simulationData.addAttribute("name", "Diana");
 
 
         return "simulations.html";
