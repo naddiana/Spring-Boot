@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor @AllArgsConstructor
 @Entity
+
 public class Simulation {
 
+    @Id
     private String id;
     private String createdAt;
     private int timeElapsed;
