@@ -7,11 +7,7 @@
 - React
 - H2 database
 - Spring Boot 3.2.3
-## Important !!!
-```
-https://reactdatepicker.com
-https://www.npmjs.com/package/@material/react-checkbox
-```
+
 Requirements
 For building and running the application you need:
 
