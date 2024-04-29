@@ -1,5 +1,8 @@
-package com.example.demo;
+package controller;
 
+import model.Simulation;
+import repository.SimulationRepository;
+import service.SimulationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

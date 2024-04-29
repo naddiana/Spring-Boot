@@ -1,4 +1,4 @@
-package com.example.demo;
+package model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,4 +17,7 @@ public class Simulation {
     private String createdAt;
     private int timeElapsed;
     private String userName;
+
+    public void setPlayer(Player player) {
+    }
 }
