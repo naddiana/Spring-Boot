@@ -5,16 +5,13 @@ import org.springframework.stereotype.Service;
 import com.github.javafaker.Faker;
 import repository.SimulationRepository;
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service
 public class SimulationService {
 
-    static ArrayList<Simulation> simulations = new ArrayList<>();
+    //static ArrayList<Simulation> simulations = new ArrayList<>();
 
     // we will fill the list simulations
     // with fake objects simulation
@@ -23,16 +20,12 @@ public class SimulationService {
     @Autowired
     SimulationRepository simulationRepository;
 
-    public Iterable<Simulation> getAllSimulations (){
-
-        return  simulationRepository.findAll();
-    }
-
-    public void populate() {
+    public List<Simulation> createFakeSimulations() {
 
         // locale in english
         Faker faker = new Faker(new Locale("en-GB"));
         Date date = new Date();
+        List<Simulation> simulations = new ArrayList<>();
 
         // ref variable creation UUID
         String uniqueID;
@@ -41,12 +34,29 @@ public class SimulationService {
 
             uniqueID = UUID.randomUUID().toString();
             simulationRepository.save(
-                    new Simulation ( uniqueID,
-                                    date.toString(),
-                                    faker.number().numberBetween(100, 1250),
-                                    faker.artist().name() ));
+            new Simulation( uniqueID,
+                    date.toString(),
+                    faker.number().numberBetween(100, 1250), null
+
+                    ));
+            //simulations.add(simulation);
+
+
         }
 
+        return simulations;
+    }
+
+    public List<Simulation> populate() {
+
+        List<Simulation> simulations = createFakeSimulations();
+
+        for (int i = 0; i <10 ; i++ ){
+            simulationRepository.save(simulations.get(i));
+            simulations.add(simulations.get(i));
+        }
+
+        return simulations;
     }
 
 

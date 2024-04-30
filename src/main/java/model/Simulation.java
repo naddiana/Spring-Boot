@@ -1,7 +1,7 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +16,11 @@ public class Simulation {
     private String id;
     private String createdAt;
     private int timeElapsed;
-    private String userName;
 
-    public void setPlayer(Player player) {
-    }
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="PLAYER_FK")
+    private Player player;
+
+
 }
